@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/signup' => 'users#new'
     post '/users' => 'users#create'
 
+    get "posts/search" => "posts#search", as: 'search'
+    
     resources :posts
 
 end

@@ -4,6 +4,16 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def search
+    @posts = Post.all
+    if params[:caption]
+      @posts = @posts.search_by_posts(params[:caption])
+
+    else
+      @posts = @posts
+    end
+  end
+
   def new
   end
 
@@ -34,9 +44,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:caption, :photo)
   end
-
-
-
-
 
 end

@@ -4,6 +4,14 @@
 
 <br>
 
+<%= form_for :post, url: search_path, method: :get do |f| %>
+  <%= f.text_field :caption, list: "list", placeholder: "search field", name: "caption" %><br/>
+  <datalist id="list" ></datalist>
+  <%= f.submit "Search" %>
+<% end %>
+
+<br>
+
 <% @posts.each do |p| %>
 
   <%= p.user.first_name %></br>
