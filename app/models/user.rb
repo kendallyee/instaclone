@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_many :posts
+
   has_many :authentications, dependent: :destroy
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
