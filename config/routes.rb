@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     post '/users' => 'users#create'
 
     get "posts/search" => "posts#search", as: 'search'
-    
-    resources :posts
+
+    resources :posts do
+      resources :comments, only: [:index, :create, :destroy], shallow: true
+    end
 
 end
