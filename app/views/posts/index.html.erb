@@ -1,0 +1,18 @@
+<h1>Post index page</h1>
+
+<%= link_to 'Create InstaPost', new_post_path%></br>
+
+<br>
+
+<% @posts.each do |p| %>
+
+  <%= p.user.first_name %></br>
+  <%= image_tag(p.photo.thumb.url || "/asdkubakdjb") %></br>
+  <%= p.caption %></br>
+  <%= time_ago_in_words(p.created_at).upcase + " AGO" %></br>
+
+<%= link_to 'Show ', post_path(p.id)%></br>
+
+<br>
+
+<%end%>

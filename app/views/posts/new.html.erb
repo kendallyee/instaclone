@@ -1,0 +1,20 @@
+<h1>Create post page</h1>
+
+<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+
+    <%= form.label :caption %>
+    <%= form.text_field :caption, hide_label: true, placeholder: "Add a caption" %>
+
+  <br>
+
+
+  <%= form.label :Instaclone_photo %>
+  <%= form.label :photo do %>
+  <%= form.file_field :photo %>
+  <%= form.hidden_field :photo_cache %>
+ <% end %>
+
+ <br>
+
+  <%= form.submit "Create Post" %>
+<% end %>
