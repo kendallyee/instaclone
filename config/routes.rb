@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     post '/users' => 'users#create'
 
     get "posts/search" => "posts#search", as: 'search'
+    get "posts/random" => "posts#random", as: "random"
 
     resources :posts do
       resources :comments, only: [:index, :create, :destroy], shallow: true
