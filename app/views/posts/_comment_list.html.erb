@@ -1,12 +1,15 @@
 <% post.comments.each do |comment| %>
-      <% if comment.user == current_user %>
-        <%= link_to "Delete comment", comment_path(comment),
-          method: :delete, remote: true, class: "delete-comment hide-text" %>
-      <% end %>
+  <br>
       <span>
         <strong>
-          <%= link_to comment.user.first_name, user_path(comment.user) %>
+          <%= link_to comment.user.first_name, user_path(comment.user) %></br>
         </strong>
       </span>
       <span><%= comment.content %></span>
+
+      <% if comment.user == current_user %></br>
+        <%= link_to "Delete comment", comment_path(comment),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %></br>
+      <% end %>
   <% end %>

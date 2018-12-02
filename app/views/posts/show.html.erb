@@ -1,7 +1,6 @@
 <h1>Show post page</h1>
 
-<%= link_to 'Create InstaPost', new_post_path%> |
-<%= link_to 'All Posts ', posts_path%></br>
+<%= link_to 'Create InstaPost', new_post_path%> 
 
 <br>
 
@@ -10,10 +9,13 @@
 <%= time_ago_in_words(@post.created_at).upcase + " AGO" %></br>
 <%= image_tag( @post.photo.thumb.url) %></br>
 
+<% if @post.is_belongs_to? current_user %>
 <%= link_to '[Delete]', post_path(@post.id),
     method: :delete,
     data: { confirm: 'Are you sure?' } %>
-
+<%end%>
+    <br>
+    <br>
 
     <!-- load comments -->
 
@@ -22,8 +24,11 @@
 
     <%#= render 'comment_form', {post: @post} %>
 
-    <h2>Comments</h2>
+    <strong>Comments</strong>
     <%= render 'comment_list', {post: @post} %>
 
-    <h2>Add a comment:</h2>
+    <br>
+    <br>
+
+    <strong>Add a comment:</strong>
     <%= render 'comment_form', {post: @post} %>

@@ -9,7 +9,11 @@ class Post < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   belongs_to :user
-  has_many :comments, dependent: :destroy 
+  has_many :comments, dependent: :destroy
+
+  def is_belongs_to? user
+        Post.find_by(user_id: user.id, id: id)
+    end
 
 
 end

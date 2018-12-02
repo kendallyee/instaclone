@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
        @post = @comment.post
-      respond_to :js
+      #respond_to :js
+    redirect_to post_path(@post)
     else
         flash[:alert] = "Something went wrong."
     end
@@ -18,7 +19,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
       @post = @comment.post
       if @comment.destroy
-        respond_to :js
+        #respond_to :js
+        redirect_to post_path(@post)
       else
         flash[:alert] = "Something went wrong."
       end
@@ -26,6 +28,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.required(:comment).permit (:user_id, :post_id, :content)
+      params.required(:comment).permit :user_id, :post_id, :content
     end
 end
