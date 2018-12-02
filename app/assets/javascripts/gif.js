@@ -1,10 +1,13 @@
-window.onload = function() {
+//window.onload = function(){
+//document.addEventListener("turbolinks:onload", function() {
+var myFunc = function() {
+//$(document).on('turbolinks:load', function(){
 // query form
 const form = document.getElementById('query-form');
 
 // text input field
 const query = document.getElementById('query');
-const list = document.getElementById('list-data')
+const list = document.getElementById('list-data');
 
 // set onsubmit
 form.onsubmit = function(event) {
@@ -15,7 +18,7 @@ form.onsubmit = function(event) {
 	const queryTerm = query.value;
 	getTaggedPhotos(queryTerm)
 	console.log(queryTerm)
-}
+};
 
 
 
@@ -69,3 +72,5 @@ function getTaggedPhotos(tagName) {
 		})
   }
 };
+//$(document).ready(myFunc);
+$(document).on('turbolinks:load', myFunc);
