@@ -1,5 +1,5 @@
-<%#= form_for [post, Comment.new], :html => {:class => "w-100", :id => "comment-ajax"}, remote: true do |f| %>
-<%= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
+<%= form_for [post, Comment.new], :html => { :id => "comment-ajax"}, remote: true do |f| %>
+<%#= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :post_id, value: post.id %>
     <%= f.text_field :content, placeholder: "Add a comment ...", autocomplete: :off %>

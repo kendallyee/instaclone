@@ -1,6 +1,6 @@
 <h1>Show post page</h1>
 
-<%= link_to 'Create InstaPost', new_post_path%> 
+<%= link_to 'Create InstaPost', new_post_path%>
 
 <br>
 
@@ -10,9 +10,9 @@
 <%= image_tag( @post.photo.thumb.url) %></br>
 
 <% if @post.is_belongs_to? current_user %>
-<%= link_to '[Delete]', post_path(@post.id),
-    method: :delete,
-    data: { confirm: 'Are you sure?' } %>
+  <%= link_to '[Delete]', post_path(@post.id),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
 <%end%>
     <br>
     <br>
@@ -24,11 +24,15 @@
 
     <%#= render 'comment_form', {post: @post} %>
 
+ <div id="comment-post-<%= @post.id.to_s %>">
     <strong>Comments</strong>
-    <%= render 'comment_list', {post: @post} %>
+      <%= render 'comment_list', {post: @post} %>
+</div>
 
     <br>
     <br>
 
+  <div class="row actions" id="comment-form-post-<%= @post.id.to_s %>">
     <strong>Add a comment:</strong>
-    <%= render 'comment_form', {post: @post} %>
+      <%= render 'comment_form', {post: @post} %>
+  </div>
