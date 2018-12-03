@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.where(nil).order('created_at DESC')
   end
 
   def search
@@ -32,6 +32,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     render 'posts/show'
+  end
+
+  def random
   end
 
   def destroy
