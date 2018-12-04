@@ -12,8 +12,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def is_belongs_to? user
-        Post.find_by(user_id: user.id, id: id)
+        #Post.find_by(user_id: user.id, id: id)
+        self.user == user
     end
-
-
 end

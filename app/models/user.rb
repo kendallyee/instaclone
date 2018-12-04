@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :posts
+  has_many :comments
 
   has_many :authentications, dependent: :destroy
 
@@ -24,6 +25,10 @@ class User < ApplicationRecord
  def google_token
    x = self.authentications.find_by(provider: 'google_oauth2')
    return x.token unless x.nil?
+ end
+
+ def full_name
+   "#{self.first_name} #{self.last_name}"
  end
 
 end

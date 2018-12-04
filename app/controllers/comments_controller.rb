@@ -8,12 +8,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
        @post = @comment.post
-       respond_to do |format|    #collect data and save as string
-       #format.json {render json: @posts}
+       respond_to do |format|
        format.html
        format.js
       end
-      #redirect_to post_path(@post)
     else
         flash[:alert] = "Something went wrong."
     end
@@ -23,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
       @post = @comment.post
       if @comment.destroy
-        respond_to do |format|    #collect data and save as string
+        respond_to do |format|   
         format.html
         format.js
         end
