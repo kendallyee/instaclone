@@ -19,11 +19,6 @@
 
     <!-- load comments -->
 
-    <%#= render 'comment_list', {post: @post} %>
-
-
-    <%#= render 'comment_form', {post: @post} %>
-
  <div id="comment-post-<%= @post.id.to_s %>">
     <strong>Comments</strong>
       <%= render 'comment_list', {post: @post} %>
